@@ -1,0 +1,294 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    background: #2554FF !important;
+    min-height: 100vh;
+    display: flex;
+    font-weight: 400;
+  }
+  
+  body,
+  html,
+  .App,
+  .vue-tempalte,
+  .vertical-center {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .vertical-center {
+    text-align: left;
+    justify-content: center;
+  }
+  
+  .inner-block {
+    margin: auto;
+    background: #ffffff;
+    box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
+    padding: 40px 55px 45px 55px;
+    border-radius: 15px;
+    transition: all .3s;
+    text-align: center;
+  }
+  
+  .vertical-center .form-control:focus {
+    border-color: #2554FF;
+    box-shadow: none;
+  }
+  
+  .vertical-center h3 {
+    text-align: center;
+    margin: 0;
+    line-height: 1;
+    padding-bottom: 20px;
+  }
+  
+  label {
+    font-weight: 500;
+  }
+  
+  .forgot-password,
+  .forgot-password a {
+    text-align: right;
+    font-size: 13px;
+    padding-top: 10px;
+    color: #7a7a7a;
+    margin: 0;
+  }
+  
+  .forgot-password a {
+    color: #2554FF;
+  }
+  
+  .social-icons {
+    text-align: center;
+    font-family: "Open Sans";
+    font-weight: 300;
+    font-size: 1.5em;
+    color: #222222;
+  }
+  
+  .social-icons ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .social-icons ul li {
+    display: inline-block;
+    zoom: 1;
+    width: 65px;
+    vertical-align: middle;
+    border: 1px solid #e3e8f9;
+    font-size: 15px;
+    height: 40px;
+    line-height: 40px;
+    margin-right: 5px;
+    background: #f4f6ff;
+  }
+  
+  .social-icons ul li a {
+    display: block;
+    font-size: 1.4em;
+    margin: 0 5px;
+    text-decoration: none;
+  }
+  .social-icons ul li a i {
+    -webkit-transition: all 0.2s ease-in;
+    -moz-transition: all 0.2s ease-in;
+    -o-transition: all 0.2s ease-in;
+    -ms-transition: all 0.2s ease-in;
+    transition: all 0.2s ease-in;
+  }
+  
+  .social-icons ul li a:focus i,
+  .social-icons ul li a:active i {
+    transition: none;
+    color: #222222;
+  }
+
+  nav {
+    margin: 0;
+    padding: 0;
+}
+
+/* ********************************************************* */
+/* ========================================================= */
+    /* ---------- NAVIGATION BAR STYLE ----------- */
+/* ********************************************************* */
+/* ========================================================= */
+.main-nav {
+  background-color: yellow;
+  color: #2554FF;
+}
+#navigation_bar {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto;
+  grid-template-areas: "logo menuItems";
+  align-items: center;
+  height: 60px;
+}
+
+#navigation_bar .logo {
+  grid-area: logo;
+  padding-left: 1em;
+}
+
+#navigation_bar .navigation-menu {
+  grid-area: menuItems;
+  justify-self: end;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 1em;
+  padding-top: 1em;
+}
+
+#navigation_bar .navigation-menu li {
+  margin-right: 10px;
+}
+
+#navigation_bar .navigation-menu li:last-child {
+  margin-right: 0;
+}
+
+#navigation_bar .navigation-menu li button {
+  background-color: transparent;
+  border: 0;
+  color: var(--lightColor);
+}
+
+
+/* ********************************************************* */
+/* ========================================================= */
+        /* ---------- ADMIN HOME STYLE ----------- */
+/* ********************************************************* */
+/* ========================================================= */
+#highness_admin {
+  display: grid;
+  grid-template-columns: 20vw 80vw;
+  grid-template-rows: auto;
+  grid-template-areas: "sideBar mainSec";
+  margin: 0;
+  padding: 0;
+  position: relative;
+  height: 100vh;
+}
+
+#highness_admin .side-bar {
+  grid-area: sideBar;
+  background-color: yellow;
+  padding: 1em;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  text-align: center;
+  position: relative;
+}
+
+#highness_admin .side-bar .company-logo {
+  margin-bottom: 50px;
+  margin-top: 20px;
+}
+
+#highness_admin .side-bar .company-logo img {
+  width: 75%;
+}
+
+#highness_admin .side-bar .nav-btns button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0.6em 1em;
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 50px;
+  transition: var(--transitionTime);
+  background-color: transparent;
+  color: #999;
+}
+
+#highness_admin .side-bar .nav-btns button:hover {
+  transition: var(--transitionTime);
+  transform: scale(0.98);
+  background-color: rgba(255, 255, 255, 0.19);
+}
+
+#highness_admin .side-bar .nav-btns button.active-btn {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--yellowishColor);
+}
+
+#highness_admin .side-bar .nav-btns button i {
+  margin-right: 10px;
+}
+
+#highness_admin .side-bar .nav-btns button span i {
+  font-size: 14px !important;
+}
+
+#highness_admin .side-bar .nav-btns button.logout-btn {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  color: #B3B3B3;
+}
+
+#highness_admin .main-sec {
+  grid-area: mainSec;
+  overflow-y: auto;
+  position: relative;
+}
+
+#highness_admin .main-sec .admin-nav {
+  background-color: var(--darkGrey) !important;
+  border-left: 2px solid var(--backgroundColor);
+  position: sticky;
+  top: 0;
+}
+
+#highness_admin .main-sec .admin-nav li {
+  color: var(--lightColor) !important;
+}
+
+#highness_admin .main-sec .admin-nav .user-image {
+  background-color: var(--yellowishColor);
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  padding-top: 5px;
+  text-align: center;
+  border-radius: 50px;
+}
+
+@keyframes lds-ellipsis1 {
+  0% {
+      transform: scale(0);
+  }
+  100% {
+      transform: scale(1);
+  }
+}
+
+@keyframes lds-ellipsis3 {
+  0% {
+      transform: scale(1);
+  }
+  100% {
+      transform: scale(0);
+  }
+}
+
+@keyframes lds-ellipsis2 {
+  0% {
+      transform: translate(0, 0);
+  }
+  100% {
+      transform: translate(24px, 0);
+  }
+}
+

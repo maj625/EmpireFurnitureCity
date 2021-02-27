@@ -1,26 +1,55 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <router-view />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import {auth} from './firebase'
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  data() {
+    return {
+      isLoggedIn: false,
+    }
+  },
+  methods: {
+    logout(){
+      auth.signOut().then(()=>{
+        this.$router.push({ path: '/' })
+      })
+    },
+    addItem() {
+      console.log('Add item')
+    }
+  },
+  created() {
+    auth.onAuthStateChanged(user => {
+      if(user == null){
+        this.isLoggedIn = false;
+      }else {
+        this.isLoggedIn = true
+      }
+    })
   }
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style scoped>
+.nav-item {
+  margin-left: 5px;
+}
+
+.nav-item input{
+  color: rgb(0, 0, 0) !important; 
+  background-color: cornsilk;
+}
+
+.nav-item input:hover {
+  transition: 0.1s; 
+  border: 2px solid rgb(2, 2, 190);
+}
+
+::placeholder {
+  color: rgba(0, 4, 236, 0.952);
 }
 </style>
