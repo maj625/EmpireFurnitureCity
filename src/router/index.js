@@ -66,6 +66,14 @@ const routes = [
                     requiresAuth: true
                 }
             },
+            {
+                path: '/notices',
+                name: 'notices',
+                component: () => import('../components/Notices.vue'),
+                meta: {
+                    requiresAuth: true
+                }
+            },
         ]
     },
 ]
@@ -84,7 +92,7 @@ router.beforeEach((to, from, next) => {
         next('/')
     } else if(requiresGuest) {
         if(auth.currentUser){
-            next('/')
+            next('/dashboard')
         }else{
             next()
         }

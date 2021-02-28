@@ -1,6 +1,7 @@
 import { firebase } from '@firebase/app'
 import '@firebase/auth'
 import '@firebase/firestore'
+import '@firebase/storage'
 
 //firebase initialisation
 const firebaseConfig = {
@@ -18,6 +19,7 @@ firebase.initializeApp(firebaseConfig)
 // utils
 const db = firebase.firestore()
 const auth = firebase.auth()
+const storage = firebase.storage()
 
 // collection references
 const usersCollection = db.collection('users')
@@ -26,5 +28,6 @@ const usersCollection = db.collection('users')
 export {
     db,
     auth,
+    storage,
     usersCollection,
 }

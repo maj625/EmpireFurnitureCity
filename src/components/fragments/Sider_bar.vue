@@ -3,7 +3,7 @@
         <div class="company-logo">
             <img src="../../assets/logo.png" alt="" />
         </div>
-        <div class="nav-btns">
+        <div class="nav-btns hidden-sm hidden-xs">
             <button
                 type="button"
                 @click.prevent="viewPage()"
@@ -54,6 +54,16 @@
                     <i class="fa fa-chevron-right"></i>
                 </span>
             </button>
+            <button
+                type="button"
+                @click.prevent="viewPage('notices')"
+                :class="pageNumber == 6 ? 'active-btn' : ''"
+            >
+                <i class="fa fa-hamburger"></i>Notices
+                <span class="w3-right">
+                    <i class="fa fa-chevron-right"></i>
+                </span>
+            </button>
             <button type="button" class="logout-btn" v-on:click="logout()">
                 <i class="fa fa-sign-out-alt"></i>Logout
             </button>
@@ -97,6 +107,9 @@ export default {
                     break;
                 case "employees":
                     pageNumber.value = 5;
+                    break;
+                case "notices":
+                    pageNumber.value = 6;
                     break;
             }
         }
