@@ -1,34 +1,53 @@
 <template>
     <div class="main-container">
-        <div class="gallery" v-for="number in count" :key="number">
+        <div class="gallery" v-for="item in items" :key="item">
             <a target="_blank" href="img_5terre.jpg">
-                <img src="../assets/logo.png" alt="Cinque Terre" width="600" height="400">
+                <img :src="item.imageUrl" alt="Cinque Terre" width="600" height="400">
             </a>
             <div class="desc">
-                <p>Size 3 Nails</p>
-                <p>R30.00</p>
+                <p>{{item.name}}</p>
+                <p>R{{item.sellPrice}}</p>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import {db} from '../firebase.js'
+
+let InventoryRef = db.collection('Inventory');
 export default {
     data() {
         return {
             image: '../assets/logo.png',
-            count: []
+            items: [],
+
         }
     },
+    inject: ['myLoader'],
     methods: {
-        counting(){
-            for (let index = 0; index < 20; index++) {
-                this.count.push(index)
-            }
+        loadItems(){
+            this.myLoader.val = true;
+            InventoryRef.orderBy('name').onSnapshot((querySnapshot)=> {
+                this.myLoader.val = false;
+                if (querySnapshot != null && querySnapshot.size != 0) {
+                    this.items = [];
+                    querySnapshot.forEach(element => {
+                        let item = element.data();
+                        if (item.imageUrl == null || item.imageUrl == '') {
+                            item.imageUrl = require('../assets/logo.png');
+                        }
+                        item.id = element.id;
+                        this.items.push(item);
+                    });
+                }else {
+                    this.$swal({title: 'No Items found', text: 'Please add some items to view them here.'})
+                }
+            });
         }
     },
     created() {
-        this.counting()
+        this.loadItems()
     }
 }
 </script>
@@ -53,6 +72,7 @@ export default {
 
 .gallery img {
     width: 100%;
+    height: 200px;
     height: auto;
 }
 

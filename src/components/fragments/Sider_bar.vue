@@ -3,7 +3,7 @@
         <div class="company-logo">
             <img src="../../assets/logo.png" alt="" />
         </div>
-        <div class="nav-btns hidden-sm hidden-xs">
+        <div class="nav-btns hidden-sm hidden-xs" style="overflow: auto">
             <button
                 type="button"
                 @click.prevent="viewPage()"

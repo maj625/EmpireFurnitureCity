@@ -135,17 +135,21 @@ export default {
 
             return true;
         },
-        
+
         addItem(){
             if (this.checkForm() == false) {
                 return;
             }
             let id = this.name + this.code;
+            id = id.replace(/\s/g,'')
+            id = id.replace(/\//g,'')
+            id = id.replace(/\./g, "");
             this.myLoader.val = true;
             InventoryRef.doc(id).get().then((result)=>{
                 this.myLoader.val = false;
+                let doc = result.data();
                 if (result.exists) {
-                    this.$swal({title: 'Duplicate Item', text: 'This item name and code already exists in the database, please use the edit option if you wish to change item details'});
+                    this.$swal({title: 'Duplicate Item', text: `${doc.code}: ${doc.name} exists in the database, please use the edit option if you wish to change item details`});
                 } else {
                     this.myLoader.val = true;
                     this.uploadFile(id);
@@ -153,7 +157,7 @@ export default {
             }).catch((err)=>{
                 this.myLoader.val = false;
                 this.$swal({title: 'Error', text: err.message});
-            })
+            });
         }
     }
 }
